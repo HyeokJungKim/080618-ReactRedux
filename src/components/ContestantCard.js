@@ -1,5 +1,4 @@
 import React from 'react'
-import {connect} from 'react-redux'
 
 function ContestantCard(props) {
   const { contestant } = props
@@ -20,11 +19,11 @@ function ContestantCard(props) {
       <img alt={contestant.name} src={swapImage()} />
       <br />
       <button onClick={() => {
-        props.pleaseIncreaseVote(contestant.id)
+        props.increaseVote(contestant.id)
       }}>
         Vote
       </button>
-      <button onClick={() => props.pleaseDecreaseVote(contestant.id) }>
+      <button onClick={() => props.decreaseVote(contestant.id) }>
         Unvote
       </button>
 
@@ -32,27 +31,4 @@ function ContestantCard(props) {
   )
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    pleaseIncreaseVote: (id) => dispatch({ type: "INCREASE_VOTE", payload: id }),
-    pleaseDecreaseVote:  (id) => dispatch({ type: "DECREASE_VOTE", payload: id })
-  }
-}
-
-
-export default connect(null, mapDispatchToProps)(ContestantCard)
+export default ContestantCard
